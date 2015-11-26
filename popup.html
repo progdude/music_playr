@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    
+    
+
+  </head>
+
+
+  <body>
+
+
+    <div class="field" id="searchform">
+      <input type="text" id="searchterm" placeholder="Song Name" />
+      <button type="button" id="search"><i class="fa fa-search"></i></button> 
+    </div>
+
+    
+    <div class="buttons">
+      <table>
+        <tr>
+          <th><button type="button" id="start"><i class="fa fa-play fa-3x play"></i><button></th>
+          <th><button type="button" id="stop"><i class="fa fa-pause fa-3x pause"></i></button></th>
+        </tr>
+      </table>
+    </div>
+
+    <div class="results" id="result">
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=init"></script>
+    <script type="text/javascript" src="popup.js"></script>
+    
+      </body>
+</html>
+
