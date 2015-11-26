@@ -1,19 +1,4 @@
 
-window.onload = function(){
-	init();
-
-}
-
-
-function init(){
-	gapi.client.setApiKey("AIzaSyDEKbLqmdvHIH9vb-IemiNaKy0H0M81vKQ")
-	gapi.client.load("youtube", "v3", function(){
-		
-	});
-
-}
-
-
 var bg = chrome.extension.getBackgroundPage();
 var son = [];
 
@@ -25,50 +10,38 @@ function loadIt(url){
 };
 
 function displayResults(){
-	
+	var output='';
 	var que = document.getElementById('searchterm').value;
-	  var results = gapi.client.youtube.search.list({
-	  	part:"snippet",
-	  	maxResults: 5,
-	  	q: que
-	  });
-
-
-	results.execute(function(response){
-		var r = response.result;
-		var output='';
-
-		output+='<button type="button" id="test1">'+r.items[0].snippet.title+'</button><br>';
-		output+='<button type="button" id="test2">'+r.items[1].snippet.title+'</button><br>';
-		output+='<button type="button" id="test3">'+r.items[2].snippet.title+'</button><br>';
-		output+='<button type="button" id="test4">'+r.items[3].snippet.title+'</button><br>';
-		output+='<button type="button" id="test5">'+r.items[4].snippet.title+'</button><br>';
-		document.getElementById('result').innerHTML = output;
-
+	tracks = loadIt("http://api.soundcloud.com/tracks?q="+que+"&client_id=4b2a02e5b25603c0017be50ec32c2a6f&format=json");
+	tracks = '{"songs":'+tracks+'}';
+	obj = JSON.parse(tracks);
+	output+='<button type="button" id="test1">'+obj.songs[0].title+'</button><br>';
+	output+='<button type="button" id="test2">'+obj.songs[1].title+'</button><br>';
+	output+='<button type="button" id="test3">'+obj.songs[2].title+'</button><br>';
+	output+='<button type="button" id="test4">'+obj.songs[3].title+'</button><br>';
+	output+='<button type="button" id="test5">'+obj.songs[4].title+'</button><br>';
+	document.getElementById('result').innerHTML = output;
 
 	document.getElementById('test1').onclick = function(){
-		bg.st("https://www.youtube.com/embed/"+r.items[0].id.videoId);
+		bg.st(obj.songs[0].id);
 	};
 
 
 	document.getElementById('test2').onclick = function(){
-		bg.st("https://www.youtube.com/embed/"+r.items[1].id.videoId);
+		bg.st(obj.songs[1].id);
 	};
 
 	document.getElementById('test3').onclick = function(){
-		bg.st("https://www.youtube.com/embed/"+r.items[2].id.videoId;
+		bg.st(obj.songs[2].id);
 	};
 
 	document.getElementById('test4').onclick = function(){
-		bg.st("https://www.youtube.com/embed/"+r.items[3].id.videoId);
+		bg.st(obj.songs[3].id);
 	};
 
 	document.getElementById('test5').onclick = function(){
-		bg.st("https://www.youtube.com/embed/"+r.items[4].id.videoId);
+		bg.st(obj.songs[4].id);
 	};
-	})
-
-
 
 
 
@@ -87,7 +60,6 @@ function no(){
 document.getElementById('search').addEventListener('click', displayResults);
 document.getElementById('stop').addEventListener('click', no);
 document.getElementById('start').addEventListener('click', yes);
-
 
 
 
