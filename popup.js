@@ -12,7 +12,7 @@ function loadIt(url){
 function displayResults(){
 	var output='';
 	var que = document.getElementById('searchterm').value;
-	tracks = loadIt("http://api.soundcloud.com/tracks?q="+que+"&client_id=4b2a02e5b25603c0017be50ec32c2a6f&format=json");
+	tracks = loadIt("http://api.soundcloud.com/tracks.json?client_id=44c88b31e709231ae8f61adc66908de3&q="+que+"&format=json");
 	tracks = '{"songs":'+tracks+'}';
 	obj = JSON.parse(tracks);
 	output+='<button type="button" id="test1">'+obj.songs[0].title+'</button><br>';
