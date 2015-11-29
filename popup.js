@@ -16,6 +16,9 @@ function displayResults(){
 	tracks = '{"songs":'+tracks+'}';
 	obj = JSON.parse(tracks);
 	var img = document.getElementById("img");
+
+
+	
 	output+='<button type="button"  id="test1">'+obj.songs[0].title+'</button><br>';
 	output+='<button type="button"  id="test2">'+obj.songs[1].title+'</button><br>';
 	output+='<button type="button"  id="test3">'+obj.songs[2].title+'</button><br>';
@@ -24,28 +27,28 @@ function displayResults(){
 	document.getElementById('result').innerHTML = output;
 
 	document.getElementById('test1').onclick = function(){
-		bg.st(obj.songs[0].id);
+		bg.st(obj.songs[0].id,obj.songs[0].artwork_url,obj.songs[0].title);
 		img.src=obj.songs[0].artwork_url;
 	};
 
 
 	document.getElementById('test2').onclick = function(){
-		bg.st(obj.songs[1].id);
+		bg.st(obj.songs[1].id,obj.songs[1].artwork_url,obj.songs[1].title);
 		img.src=obj.songs[0].artwork_url;
 	};
 
 	document.getElementById('test3').onclick = function(){
-		bg.st(obj.songs[2].id);
+		bg.st(obj.songs[2].id,obj.songs[2].artwork_url,obj.songs[2].title);
 		img.src=obj.songs[2].artwork_url;
 	};
 
 	document.getElementById('test4').onclick = function(){
-		bg.st(obj.songs[3].id);
+		bg.st(obj.songs[3].id,obj.songs[3].artwork_url,obj.songs[3].title);
 		img.src=obj.songs[3].artwork_url;
 	};
 
 	document.getElementById('test5').onclick = function(){
-		bg.st(obj.songs[4].id);
+		bg.st(obj.songs[4].id,obj.songs[4].artwork_url,obj.songs[4].title);
 		img.src=obj.songs[4].artwork_url;
 	};
 
@@ -62,11 +65,18 @@ function no(){
 	
 };
 
-
+var isPlaying = bg.checkPlay();//stupid javascript making me create a variable for every small thing
+if(isPlaying){
+	var link = bg.changePic();
+	document.getElementById("img").src = link;
+	var title = bg.changeTitle();
+	document.getElementById("description").innerHTML = title;
+}
 
 document.getElementById('search').addEventListener('click', displayResults);
 document.getElementById('stop').addEventListener('click', no);
 document.getElementById('start').addEventListener('click', yes);
+
 
 
 

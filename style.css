@@ -176,3 +176,8 @@ nav ul ul li a:hover {
   -webkit-border-radius: 100%; 
   border-radius: 100%;
 }
+
+#description{
+  text-align: center;
+  font-family: 'Montserrat Alternates';
+}
