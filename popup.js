@@ -69,6 +69,7 @@ var isPlaying = bg.checkPlay();//stupid javascript making me create a variable f
 if(isPlaying){
 	var link = bg.changePic();
 	document.getElementById("img").src = link;
+	console.log(link);
 	var title = bg.changeTitle();
 	document.getElementById("description").innerHTML = title;
 }

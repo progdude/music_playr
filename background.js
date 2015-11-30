@@ -35,7 +35,7 @@ function pl(){
 };
 
 window.onload = function(){
-var audi = document.getElementById("myAudio");
+  var audi = document.getElementById("myAudio");
 audi.onended = function(){
   img="";
   title="";

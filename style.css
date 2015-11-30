@@ -154,7 +154,9 @@ nav ul ul li a:hover {
   background: #47d583;
   color: #fff;
 } 
-
+input[type="button"]{
+   outline:none;
+}
 #down-triangle {
   float: right;
   width: 0; 
